@@ -1,18 +1,15 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using Store.Application.Interfaces.Contexts;
 using Store.Domain.Attributes;
-using Store.Domain.Entities.User;
 
 namespace Store.Persistence.Contexts;
 
-public class DataBaseContext : DbContext
+public class DataBaseContext : DbContext,IDataBaseContext
 {
     public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
     {
     }
     
-    public DbSet<User> Users { get; set; }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         foreach (var entityType in builder.Model.GetEntityTypes())

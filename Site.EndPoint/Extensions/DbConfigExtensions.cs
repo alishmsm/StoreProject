@@ -14,6 +14,9 @@ public static class DbConfigExtensions
 
         service.AddDbContext<DataBaseContext>(options =>
             options.UseSqlServer(connectionString));
+        
+        service.AddDbContext<IdentityDataBaseContext>(options =>
+            options.UseSqlServer(connectionString));
         return service;
     }
 }
